@@ -1,0 +1,45 @@
+*{
+    margin:0;
+    padding :0;
+}
+body{
+    overflow-x: hidden;
+}
+input{
+    width: 100%;
+    padding: 5px;
+}
+textarea{
+    width: 100%;
+    padding: 5px;
+}
+select,option{
+    width: 100%;
+    padding: 5px;
+}
+input[name="image"]{
+    width: 50%;
+}
+#avatar{
+    width: 50%;
+}
+footer{
+    height: 50px;
+}
+.save-btn{
+    position: absolute;
+    right: 24px;
+    display: none;
+
+}
+input[type="file"]{
+    color: transparent;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+.imageUrl{
+    position: relative;
+    /* right: 142px; */
+    left: -150px;
+}

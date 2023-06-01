@@ -1,0 +1,34 @@
+
+.product-display{
+    padding:0 !important;
+    margin : 0 1px !important;
+}
+
+.font-nav{
+    font-size: medium;
+}
+.product-image{
+    height: 300px ;
+    object-fit: contain !important;
+    box-sizing: border-box;
+    padding: 10px !important
+}
+.product:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+    cursor: pointer;
+    
+}
+.product-name{
+    height: 5rem !important
+}
+#username-container{
+    color:white;
+}
+#username-container,#logout{
+    color: white;
+}
+@media (min-width: 1200px){
+    .container {
+        max-width: 90% !important;
+    }
+}

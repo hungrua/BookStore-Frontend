@@ -1,0 +1,47 @@
+.product-preview-image{
+    display: flex !important;
+    justify-content: center !important;
+}
+.product-preview-image >img{
+    height: 100% !important;
+}
+.product-description, .render-textarea{
+    overflow: hidden;
+    width: 100%;
+    background: white;
+    border: none;
+    resize: none;
+}
+.add-to-cart{
+    padding-top: 16px
+}
+#username-container,#logout{
+    color: white;
+}
+.action-container{
+    display: flex;
+    justify-content: flex-end;
+}
+.action-container button{
+    padding: 0 10px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+.action-container button:hover{
+    color: red;
+    text-decoration: underline;
+}
+.reviews{
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+#tab3{
+    height: 260px;
+}
+.h100{
+    height:100%;
+}
+#edit-btn{
+    display: none;
+}

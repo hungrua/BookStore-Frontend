@@ -1,0 +1,78 @@
+
+
+.container-login100{
+    /* background: linear-gradient(135deg,red,rgb(22, 30, 144)); */
+    background-image: url("/electro-master/img/readding.jpg");
+    background-position: center;
+    background-size: cover;
+    box-shadow: inset 0 0 0 50vw rgba(0, 0, 0, 0.5);
+}
+.wrap-login100{
+    width: 43%;
+    height: auto !important;
+    padding:0;
+    display: flex;
+    justify-content: center;
+    background:  rgba(172, 170, 170, 0.5);
+    text-align: center;
+    border-radius: 20px;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 16px !important;
+}
+.wrap-login100  h2{
+    color: white;
+    margin: 6.5% 0
+}
+.form-login{
+    width: 70%;
+    /* font-size: large !important; */
+}
+.form-login a{
+    font-size: large;
+    color: white;
+}
+.form-login a:hover{
+    color: #57b846;
+}
+.input-login{
+    font-size: large;
+}
+.btn-submit-container{
+    width: 70%;
+    padding:0
+}
+.create-new-acc {
+    font-size: large;
+}
+#return-login{
+    font-size: large;
+    width: 42%;
+    color: white;
+    text-decoration: none;
+}
+#return-login:hover{
+    color: rgb(255, 13, 13);
+}
+.container-login100{
+    display: block;
+}
+#createAcc{
+    font-size: large;
+    color:white;
+    text-decoration: none;
+}
+#createAcc:hover{
+    color: rgb(255, 13, 13);
+}
+.btn-submit{
+    background-color: rgb(166, 20, 20)
+}
+.role-input{
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    margin: 16px 0;
+}

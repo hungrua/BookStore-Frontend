@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Login V1</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+	<!--===============================================================================================-->
+	<!-- <link rel="stylesheet" href="/electro-master/vendor/"> -->
+	<!--===============================================================================================-->
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/electro-master/vendor/animate/animate.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/electro-master/vendor/css-hamburgers/hamburgers.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/electro-master/vendor/select2/select2.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/electro-master/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/electro-master/css/login.css">
+	<!--===============================================================================================-->
+	<script src="https://use.fontawesome.com/753b1d28f6.js"></script>
+	<link rel="stylesheet" href="/electro-master/css/newLogin.css">
+</head>
+
+<body>
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100" id="login-form">
+				<form class="login100-form validate-form form-login">
+					<h2>ĐĂNG NHẬP THÀNH VIÊN</h2>
+
+					<div class="wrap-input100 validate-input">
+						<input class="input100 input-login" id="username" type="text" name="username"
+							placeholder="Tài khoản">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<input class="input100 input-login" type="password" id="password" name="pass"
+							placeholder="Mật khẩu">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+				</form>
+				<div class="container-login100-form-btn btn-submit-container">
+					<button class="login100-form-btn btn-submit" id="login-btn">
+						Đăng nhập
+					</button>
+				</div>
+
+				<div class="text-center p-t-17 create-new-acc">
+					Bạn chưa có tài khoản?
+					<a href="#" id="createAcc">
+						Tạo tài khoản ngay
+						<i class="fa fa-arrow-right" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+			<div class="wrap-login100 " id="signup-form">
+				<form class="login100-form validate-form form-login">
+					<h2>ĐĂNG KÝ THÀNH VIÊN</h2>
+					<div class="wrap-input100 validate-input">
+						<input class="input100 input-login" id="signup-email" type="email" name="email"
+							placeholder="Email">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input">
+						<input class="input100 input-login" id="signup-username" type="text" name="username"
+							placeholder="Tài khoản">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<input class="input100 input-login" type="password" id="signup-password" name="pass"
+							placeholder="Mật khẩu">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input">
+						<input class="input100 input-login" type="password" id="signup-password-check" name="pass"
+							placeholder="Nhập lại mật khẩu">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-retweet" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input role-input">
+						<div><input type="radio" name="role" id="user" value="1"> Người dùng </div>
+						<div><input type="radio" name="role" id="admin" value="2"> Quản trị viên</div>
+					</div>
+				</form>
+				<div class="container-login100-form-btn btn-submit-container">
+					<button class="login100-form-btn btn-submit" id="signup-btn">
+						Tạo tài khoản
+					</button>
+				</div>
+				<div class="text-center p-t-17 " style="width: 42%;">
+					<a href="#"  id="return-login">
+						Quay lại đăng nhập
+						<i class="fa fa-arrow-left" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!--===============================================================================================-->
+	<script src="/electro-master/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="/electro-master/vendor/bootstrap/js/popper.js"></script>
+	<script src="/electro-master/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="/electro-master/vendor/select2/select2.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="/electro-master/vendor/tilt/tilt.jquery.min.js"></script>
+	<script>
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+	<!--===============================================================================================-->
+	<script src="/electro-master/js/login.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+</body>
+
+</html>
