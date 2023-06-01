@@ -6,29 +6,6 @@ $(document).ready(function() {
     var bookId = sessionStorage.getItem("currentBook")
     var user = JSON.parse(sessionStorage.getItem("user"))
     console.log(bookId)
-    //Hiển thị thông tin sách
-    renderBookById(bookId)
-    function renderBookById(id) {
-        $.ajax({
-            type : "GET",
-            url: bookApi + id,
-            dataType : "json",
-            success: function (data) {
-                $(".product-name").text(data.title)
-                $(".product-author span").text(data.author)
-                $("#price").text(renderPrice(data.price))
-                $(".product-description").text(data.description)
-                var textarea = document.querySelector("#description");
-                textarea.style.height = 'auto';
-                textarea.style.height = textarea.scrollHeight + 'px';
-                let imageUrl = "/electro-master/image/"+data.image
-                $("#product-img").attr("src",imageUrl)
-                $("#category").text(data.category_code)
-                $("#category").attr("category_id",data.category)
-            }
-        })
-    }
-    $(".product-preview-image").height($(".product-details").height())
     //Hiển thị người dùng
     function renderUserName(){
         if(user!=null){
@@ -89,7 +66,6 @@ $(document).ready(function() {
             "user_id": user.id,
             "book_id": parseInt(bookId)
         }
-        console.log(comment)
         $.ajax({
             type: "POST",
             url : commentApi +"add",
@@ -99,7 +75,7 @@ $(document).ready(function() {
             success: function(value){
                 let html=""
                 html+=`
-                    <li id="comment-${value.id}">
+                    <li id="comment-${value.id}" rate="${value.rate}">
                         <div class="review-heading">
                             <h5 class="name">${value.user}</h5>
                             <p class="date">${value.commentDate}</p>
@@ -120,7 +96,7 @@ $(document).ready(function() {
                     if(value.user_id == user.id){
                         html+=`
                         <div class="action-container">
-                            <button class="action" onclick="editMyComment(${value.id}  ,${value.rate}) ">Chỉnh sửa</button>
+                            <button class="action" onclick="editMyComment(${value.id}) ">Chỉnh sửa</button>
                             <button class="action" onclick="deleteMyComment(${value.id})" >Xóa</button>
                         </div>
                         `
@@ -129,7 +105,10 @@ $(document).ready(function() {
                         </div>
                     </li>
                 `
+                $(".reviews").append(html)
                 alert("Thêm comment thành công !")
+                $("#commentContent").val("")
+                $("#star"+value.rate).prop("checked",false)
             }
         })
     }
@@ -144,15 +123,31 @@ $(document).ready(function() {
             url: commentApi +"book/"+id,
             dataType: "json",
             success: function(data){
+                let reviews = data.length
+                let star ={
+                    "one": 0,
+                    "two": 0,
+                    "three": 0,
+                    "four": 0,
+                    "five": 0
+                }
+                $(".nbo-comment").text(reviews)
+                console.log(reviews)
                 let html=""
                 $.each(data, function(i,value){
-                    // console.log(value.rate)
+                    let rate = parseInt(value.rate)
+                    if(rate == 1) star.one+=1
+                    else if(rate ==2) star.two+=1
+                    else if(rate ==3) star.three+=1
+                    else if(rate ==4) star.four+=1
+                    else if(rate ==5) star.five+=1
+
                     html+=`
-                    <li id="comment-${value.id}">
+                    <li id="comment-${value.id}" rate="${value.rate}">
                         <div class="review-heading">
                             <h5 class="name">${value.user}</h5>
                             <p class="date">${value.commentDate}</p>
-                            <div class="review-rating">
+                            <div class="review-rating"   >
                     `
                     for(let k=1;k<=parseInt(value.rate);k++){
                         html+=` <i class="fa fa-star"></i>`
@@ -169,7 +164,7 @@ $(document).ready(function() {
                     if(value.user_id == user.id){
                         html+=`
                         <div class="action-container">
-                            <button class="action" onclick="editMyComment(${value.id}  ,${value.rate}) ">Chỉnh sửa</button>
+                            <button class="action" onclick="editMyComment(${value.id}) ">Chỉnh sửa</button>
                             <button class="action" onclick="deleteMyComment(${value.id})" >Xóa</button>
                         </div>
                         `
@@ -180,11 +175,67 @@ $(document).ready(function() {
                     `
                 })
                 $(".reviews").html(html)
+                renderPercentRate(star,reviews)
             }
         })
     }
     renderComment(bookId)
+    //Hiển thị thông tin sách
+    renderBookById(bookId)
+    function renderBookById(id) {
+        $.ajax({
+            type : "GET",
+            url: bookApi + id,
+            dataType : "json",
+            success: function (data) {
+                $(".product-name").text(data.title)
+                $(".product-author span").text(data.author)
+                $("#price").text(renderPrice(data.price))
+                $(".product-description").text(data.description)
+                var textarea = document.querySelector("#description");
+                textarea.style.height = 'auto';
+                textarea.style.height = textarea.scrollHeight + 'px';
+                let imageUrl = "/electro-master/image/"+data.image
+                $("#product-img").attr("src",imageUrl)
+                $("#category").text(data.category_code)
+                $("#category").attr("category_id",data.category)
+                $("#overall-rating").text(data.rate.toFixed(1))
+                let rate= data.rate.toFixed(1)
+                let tmp = data.rate.toFixed(0)
+                let tmp2= rate - tmp
+                let html=""
+                
+                if(tmp2>0){
+                    tmp = parseInt(tmp)    
+                    for(let k =1 ;k<=5;k++){
+                        if(k<=tmp){
+                            html+=` <i class="fa fa-star"></i>`
+                        }
+                        else if(k==tmp+1){
+                            console.log(k)
+                            html+=` <i class="fa fa-star-half-o"></i>`
+                        }
+                        else {
+                            html+=` <i class="fa fa-star-o empty"></i>`
+                        }
+                    }
+                }
+                else {
+                    for(let k =1 ;k<=5;k++){
+                        if(k<=tmp){
+                            html+=` <i class="fa fa-star"></i>`
+                        }
+                        else {
+                            html+=`<i class="fa fa-star-o empty"></i>`
+                        }
+                    }
+                }
 
+                $(".rating-stars-render").html(html)
+            }
+        })
+    }
+    $(".product-preview-image").height($(".product-details").height())
 })
 function renderPrice(price){
     let tmp = price.toString()
@@ -220,12 +271,15 @@ function deleteMyComment(id){
     }
 }
 // Chỉnh sửa comment
-function editMyComment(id,rate){
+function editMyComment(id){
     let content= $("#content-"+id).val()
+    let rate= parseInt($("#comment-"+id).attr("rate"))
+    console.log(rate)
     $("#comment-btn").hide()
     $("#edit-btn").show()
     $("#commentContent").val(content)
-    $("#star"+rate).attr("checked", true)
+    $("#star"+rate).prop("checked",true)
+    console.log("ok")
     $("#edit-btn").click(function(){
         editComment(id,rate)
     }) 
@@ -256,10 +310,33 @@ function editComment(id) {
             $("#comment-"+id+" .review-rating").html(html)
             alert("Sửa comment thành công !")
             $("#commentContent").val("")
-            $("#star"+value.rate).attr("checked", false)
+            $("#star"+value.rate).prop("checked",false)
+            $("#comment-"+id).attr("rate",rated)
             $("#edit-btn").off("click")
             $("#edit-btn").hide()
             $("#comment-btn").show()
         }
     })
+}
+function renderPercentRate(star,reviews){
+    reviews = parseInt(reviews)
+    let ratePercent = {
+        "one":(star.one/reviews)*100 ,
+        "two":(star.two/reviews)*100 ,
+        "three":(star.three/reviews)*100 ,
+        "four":(star.four/reviews)*100 ,
+        "five":(star.five/reviews)*100
+    }
+    console.log(ratePercent)
+    $("#five-stars").text(star.five)
+    $("#four-stars").text(star.four)
+    $("#three-stars").text(star.three)
+    $("#two-stars").text(star.two)
+    $("#one-star").text(star.one)
+    $("#five-stars-percent").css("width",ratePercent.five+"%")
+    $("#four-stars-percent").css("width",ratePercent.four+"%")
+    $("#three-stars-percent").css("width",ratePercent.three+"%")
+    $("#two-stars-percent").css("width",ratePercent.two+"%")
+    $("#one-star-percent").css("width",ratePercent.one+"%")
+
 }

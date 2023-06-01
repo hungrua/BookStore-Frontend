@@ -207,14 +207,14 @@
 						<h2 class="product-name">product name goes here</h2>
 						<h4 class="product-author">Tác giả: <span>Young</span></h4>
 						<div>
-							<div class="product-rating">
+							<div class="product-rating rating-stars-render">
 								<i class="fa fa-star"></i>
 								<i class="fa fa-star"></i>
 								<i class="fa fa-star"></i>
 								<i class="fa fa-star"></i>
 								<i class="fa fa-star-o"></i>
 							</div>
-							<a class="review-link" href="#tab1">10 Review(s) | Add your review</a>
+							<a class="review-link" href="#tab1"><span class="nbo-comment" ></span> Review(s) | Add your review</a>
 						</div>
 						<div>
 							<h3 class="product-price"> <span id="price"></span><span> vnđ</span></h3>
@@ -263,7 +263,7 @@
 						<ul class="tab-nav">
 							<li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
 							<li><a data-toggle="tab" href="#tab2">Details</a></li>
-							<li><a data-toggle="tab" href="#tab3">Reviews (3)</a></li>
+							<li><a data-toggle="tab" href="#tab3">Reviews (<span class="nbo-comment"></span>)</a></li>
 						</ul>
 						<!-- /product tab nav -->
 
@@ -308,13 +308,9 @@
 									<div class="col-md-3">
 										<div id="rating">
 											<div class="rating-avg">
-												<span>4.5</span>
-												<div class="rating-stars">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-o"></i>
+												<span id="overall-rating"></span>
+												<div class="rating-stars rating-stars-render" >
+													<i class="fa fa-star-half-o" ></i>
 												</div>
 											</div>
 											<ul class="rating">
@@ -327,9 +323,9 @@
 														<i class="fa fa-star"></i>
 													</div>
 													<div class="rating-progress">
-														<div style="width: 80%;"></div>
+														<div id="five-stars-percent"></div>
 													</div>
-													<span class="sum">3</span>
+													<span class="sum" id="five-stars">3</span>
 												</li>
 												<li>
 													<div class="rating-stars">
@@ -340,9 +336,9 @@
 														<i class="fa fa-star-o"></i>
 													</div>
 													<div class="rating-progress">
-														<div style="width: 60%;"></div>
+														<div id="four-stars-percent"></div>
 													</div>
-													<span class="sum">2</span>
+													<span class="sum" id="four-stars">2</span>
 												</li>
 												<li>
 													<div class="rating-stars">
@@ -353,9 +349,9 @@
 														<i class="fa fa-star-o"></i>
 													</div>
 													<div class="rating-progress">
-														<div></div>
+														<div id="three-stars-percent" ></div>
 													</div>
-													<span class="sum">0</span>
+													<span class="sum" id="three-stars">0</span>
 												</li>
 												<li>
 													<div class="rating-stars">
@@ -366,9 +362,9 @@
 														<i class="fa fa-star-o"></i>
 													</div>
 													<div class="rating-progress">
-														<div></div>
+														<div id="two-stars-percent"></div>
 													</div>
-													<span class="sum">0</span>
+													<span class="sum" id="two-stars">0</span>
 												</li>
 												<li>
 													<div class="rating-stars">
@@ -379,9 +375,9 @@
 														<i class="fa fa-star-o"></i>
 													</div>
 													<div class="rating-progress">
-														<div></div>
+														<div id="one-star-percent" ></div>
 													</div>
-													<span class="sum">0</span>
+													<span class="sum" id="one-star">0</span>
 												</li>
 											</ul>
 										</div>
