@@ -1,0 +1,34 @@
+.order-col{
+    display: flex !important;
+}
+.product-quantity{
+    width: 10% !important;
+}
+.product-total{
+    width: 20% !important;
+}
+.product-title{
+    width: 70%;
+}
+.order-submit{
+    width: 100%;
+}
+.order-submit:hover{
+    background-color: white !important;
+    outline-style: solid !important;
+    outline-width: 2px !important;
+    outline-color: #d10024 !important;
+    color: #d10024 !important;
+    box-sizing: border-box;
+}
+.d-flex-sp-btw{
+    display: flex;
+    justify-content: space-between;
+}
+ul{
+    list-style: auto;
+    list-style-position: inside;
+}
+textarea{
+    resize: vertical;
+}

@@ -1,0 +1,21 @@
+.d-flex{
+    width: 100%;
+    display: flex;
+    vertical-align: middle;
+}
+.receiver, .orderDate{
+    width: 40%;
+}
+.contact{
+    width: 20%;
+}
+.infoContainer{
+    margin-bottom: 10px;
+}
+th,td{
+   text-align: center; 
+   padding: 10px 10px
+}
+.bill-container{
+    margin-bottom: 30px;
+}

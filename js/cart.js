@@ -27,6 +27,10 @@ $(document).ready(function(){
                     </tr>
                     `
                 })
+                if(data.length>0){
+                    $("#createBillLink").css("display","block")
+                }
+                else $("#createBillLink").css("display","none")
                 $("tbody").html(html)
                 $("#totalPaid").text(renderPrice(total))
             }
@@ -62,6 +66,7 @@ function deleteBookCart(id){
                 let total= $("#totalPaid").text().split(".").join("")
                 $("#totalPaid").text(renderPrice(parseInt(total)-parseInt(priceAll)))
                 $("#bookCart-"+data).hide()
+                if($("#totalPaid").text()=="0")  $("#createBillLink").css("display","none")
             }
         })
     }

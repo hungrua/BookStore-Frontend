@@ -124,6 +124,7 @@ $(document).ready(function() {
             dataType: "json",
             success: function(data){
                 let reviews = data.length
+                let totalRate =0;
                 let star ={
                     "one": 0,
                     "two": 0,
@@ -136,6 +137,7 @@ $(document).ready(function() {
                 let html=""
                 $.each(data, function(i,value){
                     let rate = parseInt(value.rate)
+                    totalRate+= rate
                     if(rate == 1) star.one+=1
                     else if(rate ==2) star.two+=1
                     else if(rate ==3) star.three+=1
@@ -174,8 +176,49 @@ $(document).ready(function() {
                     </li>
                     `
                 })
+                let html2=""
+                if(reviews==0){
+                    for(let k =1 ;k<=5;k++){
+                        html2+=`<i class="fa fa-star-o empty"></i>`
+                    }
+                    $("#overall-rating").text(0.0)
+                }
+                else{
+                    let overallRate= (totalRate/reviews).toFixed(1)
+                    let tmp =(Math.floor(totalRate/reviews))
+                    let tmp2= overallRate - tmp
+                    $("#overall-rating").text(overallRate)
+                    if(tmp2>0){
+                        tmp = parseInt(tmp)    
+                        for(let k =1 ;k<=5;k++){
+                            if(k<=tmp){
+                                html2+=` <i class="fa fa-star"></i>`
+                            }
+                            else if(k==tmp+1){
+                                console.log(k)
+                                html2+=` <i class="fa fa-star-half-o"></i>`
+                            }
+                            else {
+                                html2+=` <i class="fa fa-star-o empty"></i>`
+                            }
+                        }
+                    }
+                    else {
+                        for(let k =1 ;k<=5;k++){
+                            if(k<=tmp){
+                                html2+=` <i class="fa fa-star"></i>`
+                            }
+                            else {
+                                html2+=`<i class="fa fa-star-o empty"></i>`
+                            }
+                        }
+                    }
+                    renderPercentRate(star,reviews)
+                }
+                
+
+                $(".rating-stars-render").html(html2)
                 $(".reviews").html(html)
-                renderPercentRate(star,reviews)
             }
         })
     }
@@ -199,39 +242,6 @@ $(document).ready(function() {
                 $("#product-img").attr("src",imageUrl)
                 $("#category").text(data.category_code)
                 $("#category").attr("category_id",data.category)
-                $("#overall-rating").text(data.rate.toFixed(1))
-                let rate= data.rate.toFixed(1)
-                let tmp = data.rate.toFixed(0)
-                let tmp2= rate - tmp
-                let html=""
-                
-                if(tmp2>0){
-                    tmp = parseInt(tmp)    
-                    for(let k =1 ;k<=5;k++){
-                        if(k<=tmp){
-                            html+=` <i class="fa fa-star"></i>`
-                        }
-                        else if(k==tmp+1){
-                            console.log(k)
-                            html+=` <i class="fa fa-star-half-o"></i>`
-                        }
-                        else {
-                            html+=` <i class="fa fa-star-o empty"></i>`
-                        }
-                    }
-                }
-                else {
-                    for(let k =1 ;k<=5;k++){
-                        if(k<=tmp){
-                            html+=` <i class="fa fa-star"></i>`
-                        }
-                        else {
-                            html+=`<i class="fa fa-star-o empty"></i>`
-                        }
-                    }
-                }
-
-                $(".rating-stars-render").html(html)
             }
         })
     }

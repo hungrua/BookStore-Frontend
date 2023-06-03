@@ -101,7 +101,6 @@ function addToCart(id){
         success: function(data){
             if(data.id!=null){
                 alert("Thêm vào giỏ hàng thành công!")
-                window.location.href="http://localhost:5500/electro-master/cart.html#"
             }
             else {
                 alert("Sản phẩm này đã có trong giỏ hàng của bạn")
